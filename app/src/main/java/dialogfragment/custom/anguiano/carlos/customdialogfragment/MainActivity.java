@@ -1,5 +1,6 @@
 package dialogfragment.custom.anguiano.carlos.customdialogfragment;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Button", Toast.LENGTH_SHORT).show();
-                FullScreenDialog dialog = new FullScreenDialog();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                dialog.show(getFragmentManager(), "");
+                showEditDialog();
             }
         });
+    }
+
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        FullScreenDialog editNameDialogFragment = FullScreenDialog.newInstance("Some Title");
+        editNameDialogFragment.show(getFragmentManager(), "fragment_edit_name");
     }
 }
